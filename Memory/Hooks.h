@@ -45,7 +45,7 @@ public:
 
 	static void		GameMode_tick(C_GameMode* _this);
 	static void		SurvivalMode_tick(C_GameMode* _this);
-	static void		ChatScreenController_sendChatMessage(uint8_t* _this);
+	static void		ChatScreenController_sendChatMessage(void* _this, TextHolder* text);
 	static __int64	UIScene_setupAndRender(C_UIScene* uiscene, __int64 screencontext);
 	static __int64	UIScene_render(C_UIScene* uiscene, __int64 screencontext);
 	static __int64	RenderText(__int64 a1, C_MinecraftUIRenderContext* renderCtx);

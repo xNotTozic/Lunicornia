@@ -305,6 +305,19 @@ public:
 		return FindSignatureModule("Minecraft.Windows.exe", szSignature);
 	}
 
+	static uintptr_t** getVtableFromSignature(const char* szSignature, int offset) {
+		uintptr_t** signatureOffset = 0x0;
+		if (signatureOffset == 0x0) {
+			uintptr_t sigOffset = FindSignature(szSignature);
+			if (sigOffset != 0x0) {
+				int finalOffset = *reinterpret_cast<int*>((sigOffset + offset));                      // Get Offset from code
+				signatureOffset = reinterpret_cast<uintptr_t**>(sigOffset + finalOffset + /*length of instruction*/ 7);
+				return signatureOffset;
+			}
+		}
+		return 0u;
+	}
+
 	// https://stackoverflow.com/a/34571089
 	static std::string base64_encode(const std::string& in) {
 
