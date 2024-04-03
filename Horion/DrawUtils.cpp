@@ -19,16 +19,16 @@ using tess_end_t = void(__fastcall*)(__int64, __int64 tesselator,__int64*);
 using  mce__VertexFormat__disableHalfFloats_t = void(__fastcall*)(__int64, int,int);
 using Tessellator__initializeFormat_t = void(__fastcall*)(__int64, __int64);
 
-tess_vertex_t tess_vertex = reinterpret_cast<tess_vertex_t>(Utils::FindSignature("48 8B C4 48 89 78 ?? 55 48 8D 68"));
-tess_end_t tess_end = reinterpret_cast<tess_end_t>(Utils::FindSignature("40 53 56 57 48 81 EC ?? ?? ?? ?? 48 C7 44 24 ?? FE FF FF FF 49 8B F0 48 8B DA 48 8B F9"));
-mce__VertexFormat__disableHalfFloats_t mce__VertexFormat__disableHalfFloats = reinterpret_cast<mce__VertexFormat__disableHalfFloats_t>(Utils::FindSignature("48 83 EC 28 4C 8B C9 C7 81 ?? ?? ?? ?? ?? ?? ?? ?? C6 81 ?? ?? ?? ?? ?? C6 81 ?? ?? ?? ?? ?? C6 81"));
-Tessellator__initializeFormat_t Tessellator__initializeFormat = reinterpret_cast<Tessellator__initializeFormat_t>(Utils::FindSignature("48 89 74 24 ?? 57 48 83 EC 20 4C 8B 41 ?? 48 8B FA 4C 2B 41 ?? 48 8B F1 48 83 C1 08 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 49 F7 E8 48 D1 FA 48 8B C2 48 C1 E8 3F 48 03 D0 48 3B FA"));
+tess_vertex_t tess_vertex = reinterpret_cast<tess_vertex_t>(Utils::FindSignature("40 57 48 81 EC ? ? ? ? ? ? 7C 24")); // Updated
+tess_end_t tess_end = reinterpret_cast<tess_end_t>(Utils::FindSignature("40 55 53 56 57 41 56 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 49 8B F0")); // Updated
+//mce__VertexFormat__disableHalfFloats_t mce__VertexFormat__disableHalfFloats = reinterpret_cast<mce__VertexFormat__disableHalfFloats_t>(Utils::FindSignature("48 83 EC 28 4C 8B C9 C7 81 ?? ?? ?? ?? ?? ?? ?? ?? C6 81 ?? ?? ?? ?? ?? C6 81 ?? ?? ?? ?? ?? C6 81"));
+//Tessellator__initializeFormat_t Tessellator__initializeFormat = reinterpret_cast<Tessellator__initializeFormat_t>(Utils::FindSignature("48 89 74 24 ?? 57 48 83 EC 20 4C 8B 41 ?? 48 8B FA 4C 2B 41 ?? 48 8B F1 48 83 C1 08 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 49 F7 E8 48 D1 FA 48 8B C2 48 C1 E8 3F 48 03 D0 48 3B FA"));
 
 void DrawUtils::tess__begin(__int64 tesselator)
 {
 	if (!*(BYTE*)(tesselator + 0x1FC) && !*(BYTE*)(tesselator + 0x1B5))
 	{
-		mce__VertexFormat__disableHalfFloats(tesselator,0,0); //guessed with tess_begin in 1.12
+		//mce__VertexFormat__disableHalfFloats(tesselator,0,0); //guessed with tess_begin in 1.12
 		*(BYTE*)(tesselator + 8) = 3;
 		*(BYTE*)(tesselator + 0x1B4) = 0;
 		*(WORD*)(tesselator + 0x1FC) = 1;
@@ -36,7 +36,7 @@ void DrawUtils::tess__begin(__int64 tesselator)
 		*(__int64*)(tesselator + 0x150) = *(__int64*)(tesselator + 0x148);
 		if (!*(BYTE*)tesselator)
 			*(BYTE*)(tesselator + 0xD0) = 1;
-		Tessellator__initializeFormat(tesselator + 8, 0x66i64);//same
+		//Tessellator__initializeFormat(tesselator + 8, 0x66i64);//same
 	}
 }
 
