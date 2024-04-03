@@ -26,22 +26,20 @@ public:
 		}
 		return -1;
 	}
-	void dropSlot(int slot)
+	void dropSlot(int slot) // Updated
 	{
 		// FillingContainer::dropSlot
 		using drop_t = void(__fastcall*)(C_Inventory*, int, char);
-		static drop_t func = reinterpret_cast<drop_t>(Utils::FindSignature("85 D2 0F 88 ?? ?? ?? ?? 55 56 57 41 54 41 55 41 56 41 57 48"));
+		static drop_t func = reinterpret_cast<drop_t>(Utils::FindSignature("85 D2 0F 88 ?? ?? ?? ?? 48 89 5C 24 ?? 55 56 57 41 54")); // Updated
 		if (func != 0)
 			func(this, slot,0);
 	}
 
 	// DROPS WHOLE INVENTORY doesnt work tho
-	void dropAll(int slot) {
-		// FillingContainer::dropAll
-		using dropAll_t = void(__fastcall*)(C_Inventory*, int, int, char);
-		static dropAll_t func = reinterpret_cast<dropAll_t>(Utils::FindSignature("48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 48 89 7C 24 ?? 41 56 48 83 EC ?? 48 8B 01 41 0F"));
-		if (func != 0)
-			func(this, slot, 0, 0);
+	void dropAll(int slot) { // Fixed LMAO
+		for (int i = 0; i < 36; i++) {
+			dropSlot(i);
+		}
 	}
 
 	virtual __int64 init();
@@ -54,26 +52,17 @@ public:
 };
 
 class C_PlayerInventoryProxy {
-private:
-	char pad_0x0000[0x10]; //0x0000
 public:
-	int selectedHotbarSlot; //0x0010 
-private:
-	char pad_0x0014[0x8C]; //0x0014
-public:
-	uint8_t holdingItem; //0x00A0 
-private:
-	char pad_0x00A1[0x7]; //0x00A1
-public:
-	C_Inventory* inventory; //0x00A8 
+	BUILD_ACCESS(this, int, selectedHotbarSlot, 0x10); // Updated
+	BUILD_ACCESS(this, C_Inventory*, inventory, 0xC0); // Updated
 };
 
 class C_ContainerScreenController
 {
 public:
-	void handleAutoPlace(uintptr_t a1, std::string name, int slot) {
+	void handleAutoPlace(uintptr_t a1, std::string name, int slot) { // Updated
 		using ContainerScreenController__autoPlace = __int64(__fastcall*)(C_ContainerScreenController*, uintptr_t, TextHolder, int);
-		static ContainerScreenController__autoPlace autoPlaceFunc = reinterpret_cast<ContainerScreenController__autoPlace>(Utils::FindSignature("40 55 53 56 57 41 54 41 55 41 56 41 57 ?? ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? ?? ?? 48 8B 05 ?? ?? ?? ?? 48 33 C4 ?? ?? ?? ?? ?? ?? ?? 45 8B E1"));
+		static ContainerScreenController__autoPlace autoPlaceFunc = reinterpret_cast<ContainerScreenController__autoPlace>(Utils::FindSignature("40 55 53 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 45 8B E1 4D 8B F0"));
 
 		TextHolder txt = TextHolder(name);
 

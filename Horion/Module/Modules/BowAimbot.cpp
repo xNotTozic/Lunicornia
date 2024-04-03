@@ -43,14 +43,14 @@ void BowAimbot::onPostRender() {
 	if (localPlayer->itemId != 261)  // Bow in hand?
 		return;
 
-	vec3_t origin = g_Data.getClientInstance()->levelRenderer->origin;
+	vec3_t origin = g_Data.getClientInstance()->levelRenderer->getOrigin();
 
 	targetList.clear();
 
 	g_Data.forEachEntity(findTargets);
 
 	if (targetList.size() > 0) {
-		vec3_t origin = g_Data.getClientInstance()->levelRenderer->origin;  // TODO: sort list
+		vec3_t origin = g_Data.getClientInstance()->levelRenderer->getOrigin();  // TODO: sort list
 		C_Entity* entity = targetList[0];
 		vec3_t pos = *entity->getPos();
 

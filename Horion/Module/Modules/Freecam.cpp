@@ -33,7 +33,7 @@ void Freecam::onEnable()
 void Freecam::onDisable()
 {
 	if (g_Data.getLocalPlayer() != nullptr) {
-		g_Data.getLocalPlayer()->setPos(oldPos);
+		//g_Data.getLocalPlayer()->setPos(oldPos);
 		if(g_Data.getLocalPlayer()->gamemode != 1)
 			g_Data.getLocalPlayer()->canFly = false;
 	}

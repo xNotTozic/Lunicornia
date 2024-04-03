@@ -69,7 +69,7 @@ void DrawUtils::setCtx(C_MinecraftUIRenderContext * ctx, C_GuiData* gui)
 	screenSize.x = gui->widthGame;
 	screenSize.y = gui->heightGame;
 	if(g_Data.getClientInstance()->levelRenderer != nullptr)	
-		origin = g_Data.getClientInstance()->levelRenderer->origin;
+		origin = g_Data.getClientInstance()->levelRenderer->getOrigin();
 
 	if (tess_end_base == 0x0) {
 		// 2 Sigs, wanted one comes first
@@ -92,7 +92,7 @@ C_Font* DrawUtils::getFont(Fonts font)
 {
 	switch (font) {
 	case Fonts::SMOOTH:
-		return g_Data.getClientInstance()->N0000080D->getTheGoodFontThankYou();
+		return g_Data.getClientInstance()->_getFont();
 		break;
 	case Fonts::UNICOD:
 		return g_Data.getClientInstance()->_getUnicodeFont();

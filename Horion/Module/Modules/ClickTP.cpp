@@ -36,7 +36,7 @@ void ClickTP::onTick(C_GameMode* gm)
 		pos.y += (gm->player->getPos()->y - gm->player->getAABB()->lower.y) + 1; // eye height + 1
 		pos.x += 0.5f;
 		pos.z += 0.5f;
-		gm->player->setPos(pos);
+		//gm->player->setPos(pos);
 		hasClicked = true;
 	}
 	else if (!GameData::isRightClickDown()) {

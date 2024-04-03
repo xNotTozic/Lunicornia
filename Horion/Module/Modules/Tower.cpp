@@ -104,7 +104,7 @@ void Tower::onPostRender()
 			blockBelow.z -= vel.z * 0.4f;
 			if (!tryTower(blockBelow)) {
 				blockBelow.x -= vel.x * 0.4f;
-				if (!tryTower(blockBelow) && g_Data.getLocalPlayer()->isSprinting()) {
+				if (!tryTower(blockBelow)) {
 					blockBelow.z += vel.z;
 					blockBelow.x += vel.x;
 					tryTower(blockBelow);

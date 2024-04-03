@@ -60,7 +60,7 @@ bool PlayerTeleportCommand::execute(std::vector<std::string>* args)
 		//clientMessageF("[%Lunicornia%s] %sCouldn't find player: %s!",GOLD,WHITE,RED,nameOfPlayer.c_str());
 		return true;
 	}
-	g_Data.getLocalPlayer()->setPos(pos);
+	//g_Data.getLocalPlayer()->setPos(pos);
 	//clientMessageF("[%Lunicornia%s] %sTeleported to %s",GOLD,WHITE,GREEN, playerName.c_str());
 	return true;
 }

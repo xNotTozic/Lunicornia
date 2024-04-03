@@ -29,8 +29,8 @@ void InventoryMove::onTick(C_GameMode* gm)
 	float yaw = gm->player->yaw;
 
 
-	if (GameData::isKeyDown(*input->spaceBarKey) && gm->player->onGround)
-		gm->player->jumpFromGround();
+	//if (GameData::isKeyDown(*input->spaceBarKey) && gm->player->onGround)
+		//gm->player->jumpFromGround();
 
 	if (GameData::isKeyDown(*input->forwardKey) && GameData::isKeyDown(*input->backKey))
 		return;

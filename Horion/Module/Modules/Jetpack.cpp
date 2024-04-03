@@ -62,7 +62,7 @@ void Jetpack::onTick(C_GameMode * gm)
 			float teleportZ = sin(calcYaw) * cos(calcPitch) * 0.00000005f;
 
 			pos = *gm->player->getPos();
-			g_Data.getLocalPlayer()->setPos(vec3_t(pos.x + teleportX, pos.y - 0.15f, pos.z + teleportZ));
+			//g_Data.getLocalPlayer()->setPos(vec3_t(pos.x + teleportX, pos.y - 0.15f, pos.z + teleportZ));
 
 			gm->player->velocity.y -= 0.15f;
 			delay = 0;

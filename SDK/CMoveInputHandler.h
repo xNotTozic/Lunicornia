@@ -1,18 +1,25 @@
 #pragma once
 
-class C_MoveInputHandler {
-private:
-	char pad_0x0000[0xC]; //0x0000
+class C_MoveInputHandler { // Updated
 public:
-	float movingFriction;//0xC
-private:
-	char pad_0x0010[0x66];//0x10
-public:
-	bool isMovingForward;//0x76
-	bool isMovingBackward;//0x77
-	bool isMovingLeft;//0x78
-	bool isMovingRight;//0x79
+	BUILD_ACCESS(this, bool, isSneakDownPrev, 0x0); // Updated
+	BUILD_ACCESS(this, bool, isJumpingPrev, 0x6); // Updated
+	BUILD_ACCESS(this, bool, isSprintingPrev, 0x7); // Updated
+	BUILD_ACCESS(this, bool, forwardPrev, 0xA); // Updated
+	BUILD_ACCESS(this, bool, backwardPrev, 0xB); // Updated
+	BUILD_ACCESS(this, bool, leftPrev, 0xC); // Updated
+	BUILD_ACCESS(this, bool, rightPrev, 0xD); // Updated
+	BUILD_ACCESS(this, bool, isSneakDown, 0x20); // Updated
+	BUILD_ACCESS(this, bool, isJumping, 0x26); // Updated
+	BUILD_ACCESS(this, bool, isSprinting, 0x27); // Updated
+	BUILD_ACCESS(this, bool, isMovingForward, 0x2A); // Updated
+	BUILD_ACCESS(this, bool, isMovingBackward, 0x2B); // Updated
+	BUILD_ACCESS(this, bool, isMovingLeft, 0x2C); // Updated
+	BUILD_ACCESS(this, bool, isMovingRight, 0x2D); // Updated
+	BUILD_ACCESS(this, float, sideMovement, 0x48); // Updated
+	BUILD_ACCESS(this, float, forwardMovement, 0x4C); // Updated
+
 	__int64 ClearMovementState() {
-		return Utils::CallVFunc<4,__int64>(this);
+		return Utils::CallVFunc<4,__int64>(this); // Outdated
 	};
 };

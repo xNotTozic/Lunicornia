@@ -62,7 +62,7 @@ void BedFucker::onTick(C_GameMode* gm) {
 		if (this->treasures) {
 			g_Data.forEachEntity([](C_Entity* ent, bool b) {
 				std::string name = ent->getNameTag()->getText();
-				int id = ent->getEntityTypeId();
+				int id = 1;
 				if (name.find("Treasure") != std::string::npos && id == 319 && g_Data.getLocalPlayer()->getPos()->dist(*ent->getPos()) <= 5) {
 					g_Data.getCGameMode()->attack(ent);
 					g_Data.getLocalPlayer()->swingArm();

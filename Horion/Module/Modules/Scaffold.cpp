@@ -102,7 +102,7 @@ void Scaffold::onPostRender() {
 			blockBelow.z -= vel.z * 0.4f;
 			if (!tryScaffold(blockBelow)) {
 				blockBelow.x -= vel.x * 0.4f;
-				if (!tryScaffold(blockBelow) && g_Data.getLocalPlayer()->isSprinting()) {
+				if (!tryScaffold(blockBelow)) {
 					blockBelow.z += vel.z;
 					blockBelow.x += vel.x;
 					tryScaffold(blockBelow);

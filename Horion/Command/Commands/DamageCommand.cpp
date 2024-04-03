@@ -16,11 +16,11 @@ bool DamageCommand::execute(std::vector<std::string>* args)
 
 	if (moduleMgr->getModule<NoFall>()->isEnabled()) {
 		moduleMgr->getModule<NoFall>()->setEnabled(false);
-		g_Data.getLocalPlayer()->causeFallDamage(amount + 3.f);
+		//g_Data.getLocalPlayer()->causeFallDamage(amount + 3.f);
 		moduleMgr->getModule<NoFall>()->setEnabled(true);
 	}
 	else {
-		g_Data.getLocalPlayer()->causeFallDamage(amount + 3.f);
+		//g_Data.getLocalPlayer()->causeFallDamage(amount + 3.f);
 	}
 	return true;
 }

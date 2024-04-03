@@ -25,7 +25,7 @@ bool TeleportCommand::execute(std::vector<std::string>* args)
 	pos.y = assertFloat(args->at(2));
 	pos.z = assertFloat(args->at(3));
 
-	g_Data.getLocalPlayer()->setPos(pos);
+	//g_Data.getLocalPlayer()->setPos(pos);
 	clientMessageF("%sTeleported!", GREEN);
 	return true;
 }

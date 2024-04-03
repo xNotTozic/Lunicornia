@@ -20,7 +20,7 @@ const char* AutoSprint::getRawModuleName()
 }
 
 void AutoSprint::onTick(C_GameMode* gm) {
-	if (gm->player != nullptr && !gm->player->isSprinting() && gm->player->velocity.magnitudexz() > 0.01f) {
+	if (gm->player != nullptr) {
 		gm->player->setSprinting(true);
 	}
 }

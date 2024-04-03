@@ -20,7 +20,7 @@ const char* AutoSneak::getRawModuleName()
 }
 
 void AutoSneak::onTick(C_GameMode* gm) {
-	if (gm->player != nullptr && !gm->player->isSneaking()) {
+	if (gm->player != nullptr) {
 		gm->player->setSneaking(true);
 
 	}

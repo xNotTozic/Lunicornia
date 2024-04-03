@@ -39,7 +39,7 @@ void findEntity(C_Entity* currentEntity,bool isRegularEntitie) {
 
 		if (killauraMod->isMobAura && !isRegularEntitie)
 		{
-			if (currentEntity->getNameTag()->getTextLength() <= 1 && currentEntity->getEntityTypeId() == 63)
+			if (currentEntity->getNameTag()->getTextLength() <= 1)
 				return;
 
 			if (!g_Data.getLocalPlayer()->canAttack(currentEntity, false))
@@ -102,12 +102,12 @@ void Killaura::onTick(C_GameMode* gm)
 		// Attack all entitys in targetList 
 		if (isMulti) {
 			for (int i = 0; i < targetList.size(); i++) {
-				angle = g_Data.getClientInstance()->levelRenderer->origin.CalcAngle(*targetList[i]->getPos());
+				angle = g_Data.getClientInstance()->levelRenderer->getOrigin().CalcAngle(*targetList[i]->getPos());
 				g_Data.getCGameMode()->attack(targetList[i]);
 			}
 		}
 		else {
-			angle = g_Data.getClientInstance()->levelRenderer->origin.CalcAngle(*targetList[0]->getPos());
+			angle = g_Data.getClientInstance()->levelRenderer->getOrigin().CalcAngle(*targetList[0]->getPos());
 			g_Data.getCGameMode()->attack(targetList[0]);
 		}
 		Odelay = 0;

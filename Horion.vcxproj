@@ -373,6 +373,7 @@
     <ClInclude Include="Memory\SkinData.h" />
     <ClInclude Include="Horion\Module\Modules\NoHitbox.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="SDK\ActorFlags.h" />
     <ClInclude Include="SDK\CBlockLegacy.h" />
     <ClInclude Include="SDK\CChestBlockActor.h" />
     <ClInclude Include="SDK\CClientInstance.h" />

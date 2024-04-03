@@ -35,11 +35,11 @@ public:
 private:
 	char pad_0x0040[0x20]; //0x0040
 public:
-	PlayerAuthInputPacket()
+	PlayerAuthInputPacket() // Updated
 	{
 		static uintptr_t** PlayerAuthInputPacketVtable = 0x0;
 		if (PlayerAuthInputPacketVtable == 0x0) {
-			uintptr_t sigOffset = Utils::FindSignature("48 8D 15 ?? ?? ?? ?? 48 89 11 48 89 79 ?? 48 89 79 ?? 89 79 ?? 48 89 79 ?? 48 89 79 ??");
+			uintptr_t sigOffset = Utils::FindSignature("48 8D 0D ? ? ? ? ? ? C0 ? ? 00 C7 40 08 ? ? ? ? C7 40 0C ? ? ? ? 48 8D 05 ? ? ? ? 48 89 02 33 C0 48 89 42 ? 48 89 4A ? 33 C9"); // Updated
 			int offset = *reinterpret_cast<int*>(sigOffset + 3);
 			PlayerAuthInputPacketVtable = reinterpret_cast<uintptr_t**>(sigOffset + offset + /*length of instruction*/ 7);
 			if (PlayerAuthInputPacketVtable == 0x0 || sigOffset == 0x0)
@@ -52,7 +52,7 @@ public:
 	{
 		static uintptr_t** PlayerAuthInputPacketVtable = 0x0;
 		if (PlayerAuthInputPacketVtable == 0x0) {
-			uintptr_t sigOffset = Utils::FindSignature("48 8D 15 ?? ?? ?? ?? 48 89 11 48 89 79 ?? 48 89 79 ?? 89 79 ?? 48 89 79 ?? 48 89 79 ??");
+			uintptr_t sigOffset = Utils::FindSignature("48 8D 0D ? ? ? ? ? ? C0 ? ? 00 C7 40 08 ? ? ? ? C7 40 0C ? ? ? ? 48 8D 05 ? ? ? ? 48 89 02 33 C0 48 89 42 ? 48 89 4A ? 33 C9"); // Updated
 			int offset = *reinterpret_cast<int*>(sigOffset + 3);
 			PlayerAuthInputPacketVtable = reinterpret_cast<uintptr_t**>(sigOffset + offset + /*length of instruction*/ 7);
 			if (PlayerAuthInputPacketVtable == 0x0 || sigOffset == 0x0)
@@ -94,11 +94,11 @@ public:
 class C_MobEquipmentPacket : public C_Packet
 {
 public:
-	C_MobEquipmentPacket()
+	C_MobEquipmentPacket() // Updated
 	{
 		static uintptr_t** MobEquipmentPacketVtable = 0x0;
 		if (MobEquipmentPacketVtable == 0x0) {
-			uintptr_t sigOffset = Utils::FindSignature("48 8D 05 ?? ?? ?? ?? 48 89 01 48 89 51 ?? 48 83 C1 28 49 8B D0");
+			uintptr_t sigOffset = Utils::FindSignature("48 8D 05 ? ? ? ? 48 89 06 48 8B C6 4C 8D 9C 24"); // Updated
 			int offset = *reinterpret_cast<int*>(sigOffset + 3);
 			MobEquipmentPacketVtable = reinterpret_cast<uintptr_t * *>(sigOffset + offset + /*length of instruction*/ 7);
 			if (MobEquipmentPacketVtable == 0x0 || sigOffset == 0x0)
@@ -134,10 +134,10 @@ private:
 class C_InventoryTransactionPacket : public C_Packet
 {
 public:
-	C_InventoryTransactionPacket() {
+	C_InventoryTransactionPacket() { // Updated
 		static uintptr_t** InventoryTransactionPacketVtable = 0x0;
 		if (InventoryTransactionPacketVtable == 0x0) {
-			uintptr_t sigOffset = Utils::FindSignature("48 8D 15 ?? ?? ?? ?? 49 89 53 C0 49 89 43");
+			uintptr_t sigOffset = Utils::FindSignature("48 8D 0D ? ? ? ? 48 89 4D ? 48 8D 35"); // Updated
 			int offset = *reinterpret_cast<int*>(sigOffset + 3);
 			InventoryTransactionPacketVtable = reinterpret_cast<uintptr_t * *>(sigOffset + offset + /*length of instruction*/ 7);
 			if (InventoryTransactionPacketVtable == 0x0 || sigOffset == 0x0)
@@ -159,10 +159,10 @@ public:
 class C_TextPacket : public C_Packet
 {
 public:
-	C_TextPacket() {
+	C_TextPacket() { // Updated
 		static uintptr_t** textPacketVtable = 0x0;
 		if (textPacketVtable == 0x0) {
-			uintptr_t sigOffset = Utils::FindSignature("48 8D 05 ?? ?? ?? ?? 48 8B F9 48 89 01 48 83 C1 ?? E8 ?? ?? ?? ?? 48 8D 8F");
+			uintptr_t sigOffset = Utils::FindSignature("48 8D 05 ? ? ? ? 48 89 44 24 ? 48 8D 4D ? E8 ? ? ? ? 48 8D 4D ? E8 ? ? ? ? 48 8D 4D ? E8 ? ? ? ? 48 8D 4D ? E8 ? ? ? ? 48 8D 4D ? E8 ? ? ? ? 48 8D 4D ? E8 ? ? ? ? 48 8B 4D"); // Updated
 			int offset = *reinterpret_cast<int*>(sigOffset + 3);
 			textPacketVtable = reinterpret_cast<uintptr_t * *>(sigOffset + offset + /*length of instruction*/ 7);
 			if (textPacketVtable == 0x0 || sigOffset == 0x0)
@@ -198,7 +198,7 @@ public:
 	C_MovePlayerPacket() {
 		static uintptr_t** movePlayerPacketVtable = 0x0;
 		if (movePlayerPacketVtable == 0x0) {
-			uintptr_t sigOffset = Utils::FindSignature("48 8D 05 ?? ?? ?? ?? 48 89 01 48 8B 82 ?? ?? ?? ?? 48 89 41 ?? 48 8B 02 48 8B CA FF 50");
+			uintptr_t sigOffset = Utils::FindSignature("48 8D 05 ? ? ? ? 48 89 42 ? 48 8B 47"); // Updated
 			int offset = *reinterpret_cast<int*>(sigOffset + 3);
 			movePlayerPacketVtable = reinterpret_cast<uintptr_t**>(sigOffset  + offset + /*length of instruction*/ 7);
 			if (movePlayerPacketVtable == 0x0 || sigOffset == 0x0)
@@ -210,7 +210,7 @@ public:
 	C_MovePlayerPacket(C_LocalPlayer* player,vec3_t pos) {
 		static uintptr_t** movePlayerPacketVtable = 0x0;
 		if (movePlayerPacketVtable == 0x0) {
-			uintptr_t sigOffset = Utils::FindSignature("48 8D 05 ?? ?? ?? ?? 48 89 01 48 8B 82 ?? ?? ?? ?? 48 89 41 ?? 48 8B 02 48 8B CA FF 50");
+			uintptr_t sigOffset = Utils::FindSignature("48 8D 05 ? ? ? ? 48 89 42 ? 48 8B 47"); // Updated
 			int offset = *reinterpret_cast<int*>(sigOffset + 3);
 			movePlayerPacketVtable = reinterpret_cast<uintptr_t**>(sigOffset + offset + /*length of instruction*/ 7);
 			if (movePlayerPacketVtable == 0x0 || sigOffset == 0x0)

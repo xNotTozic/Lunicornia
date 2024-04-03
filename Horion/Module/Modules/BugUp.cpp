@@ -33,7 +33,7 @@ void BugUp::onTick(C_GameMode* gm) {
 
 	if (player->fallDistance >= distance)
 	{
-		player->setPos(savepos);
+		//player->setPos(savepos);
 	}
 
 }

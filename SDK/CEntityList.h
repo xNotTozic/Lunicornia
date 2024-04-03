@@ -7,11 +7,11 @@ class C_EntityList
 {
 public:
 private:
-	char pad_0x0000[0x40]; //0x0000
+	char pad_0x0000[0x70]; //0x0000 // Updated
 public:
-	uintptr_t firstEntity; //0x0040
-	uintptr_t lastEntity; //0x0048
-	uintptr_t endAddr; //0x0050
+	uintptr_t firstEntity; //0x0050  // Updated
+	uintptr_t lastEntity; //0x0058  // Updated
+	uintptr_t endAddr; //0x0060  // Updated
 
 	inline size_t getListSize() {
 		return (lastEntity - firstEntity) / sizeof(uintptr_t);
@@ -29,15 +29,15 @@ public:
 }; //Size=0x0050
 
 
-class C_MobEntityList
+class C_MobEntityList // Updated
 {
 public:
 private:
-	char pad_0x0000[0x38]; //0x0000
-public:
-	uintptr_t firstEntity; //0x0038
-	uintptr_t lastEntity; //0x0040
-	uintptr_t endAddr; //0x0048
+	char pad_0x0000[0x38]; //0x0000  // Updated
+public: 
+	uintptr_t firstEntity; //0x0038  // Updated
+	uintptr_t lastEntity; //0x0040  // Updated
+	uintptr_t endAddr; //0x0048  // Updated
 
 	inline size_t getListSize() {
 		return (lastEntity - firstEntity) / sizeof(uintptr_t);

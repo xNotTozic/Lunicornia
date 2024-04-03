@@ -1,6 +1,6 @@
 #pragma once
 
-class C_GameSettingsInput {
+class C_GameSettingsInput { // Updated
 private:
 	char pad_0x0000[0x3E0];//0x0000
 public:

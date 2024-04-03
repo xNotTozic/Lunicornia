@@ -2,7 +2,7 @@
 
 #include "TextHolder.h"
 
-class C_Font {
+class C_Font { // Updated
 private:
 	virtual void destructorFont();
 	virtual void unk1();
@@ -15,10 +15,7 @@ public:
 	virtual float getLineHeight();
 };
 
-class C_MinecraftUIRenderContext {
-private:
-	float _[140];
-
+class C_MinecraftUIRenderContext { // Updated
 public:
 	virtual ~C_MinecraftUIRenderContext();
 	virtual float getLineLength(C_Font* font, TextHolder* str, float textSize, bool unknown);

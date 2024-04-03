@@ -31,7 +31,7 @@ void doRenderStuff(C_Entity* ent, bool isRegularEntitie) {
 				else
 					DrawUtils::setColor(0.9f, 0.9f, 0.9f, max(0.1f, min(1.f, 15 / (ent->damageTime + 1))));
 			} else if (espMod->isMobEsp) {
-				if (ent->getNameTag()->getTextLength() <= 1 && ent->getEntityTypeId() == 63)
+				if (ent->getNameTag()->getTextLength() <= 1)
 					return;
 
 				if (ent->isInvisible())
