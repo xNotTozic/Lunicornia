@@ -65,7 +65,6 @@ public:
 	static __int8*	BlockLegacy_getLightEmission(C_BlockLegacy* _this, __int8* a2);
 	static __int64	LevelRenderer_renderLevel(__int64 _this, __int64 a2, __int64 a3);
 	static void		ClickFunc(__int64 a1, char a2, char a3, __int16 a4, __int16 a5, __int16 a6, __int16 a7, char a8);
-	static __int64	MoveInputHandler_tick(C_MoveInputHandler* _this, C_Entity* a2);
 	static __int64	ChestScreenController_tick(C_ChestScreenController* _this);
 	static __int64	GetGamma(__int64 a1);
 	static bool		Actor_isInWater(C_Entity* _this);
@@ -100,7 +99,6 @@ public:
 	std::unique_ptr<FuncHook> BlockLegacy_getLightEmissionHook;
 	std::unique_ptr<FuncHook> LevelRenderer_renderLevelHook;
 	std::unique_ptr<FuncHook> ClickFuncHook;
-	std::unique_ptr<FuncHook> MoveInputHandler_tickHook;
 	std::unique_ptr<FuncHook> ChestScreenController_tickHook;
 	std::unique_ptr<FuncHook> GetGammaHook;
 	std::unique_ptr<FuncHook> Actor_isInWaterHook;

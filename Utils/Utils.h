@@ -428,7 +428,7 @@ public:
 #endif
 #else
 		char* msgToTheOverwhelmedDebugger = "SIGNATURE NOT FOUND";
-		__debugbreak();
+		//__debugbreak();
 
 		throw std::exception("Signature not found");
 #endif

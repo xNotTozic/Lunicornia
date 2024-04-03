@@ -54,18 +54,6 @@ void Hooks::Init()
 				g_Hooks.Actor_ladderUpHook = std::make_unique<FuncHook>(localPlayerVtable[331], Hooks::Actor_ladderUp);
 			}
 		}
-
-		// MoveInputHandler::vtable
-		{
-			uintptr_t sigOffset = Utils::FindSignature("48 89 5C ? ? 55 56 57 41 56 41 57 48 8B EC 48 83 EC ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 45 ? 49 8B 01"); // Updated
-			int offset = *reinterpret_cast<int*>(sigOffset + 3);
-			uintptr_t** moveInputVtable = reinterpret_cast<uintptr_t**>(sigOffset + offset + /*length of instruction*/ 7);
-			if (moveInputVtable == 0x0 || sigOffset == 0x0)
-				logF("C_GameMode signature not working!!!");
-			else {
-				g_Hooks.MoveInputHandler_tickHook = std::make_unique<FuncHook>(moveInputVtable[1], Hooks::MoveInputHandler_tick);
-			}
-		}
 	}
 	
 	// Signatures
@@ -168,7 +156,6 @@ void Hooks::Restore()
 	g_Hooks.LevelRenderer_renderLevelHook->Restore();
 	g_Hooks.BlockLegacy_getLightEmissionHook->Restore();
 	g_Hooks.ClickFuncHook->Restore();
-	g_Hooks.MoveInputHandler_tickHook->Restore();
 	g_Hooks.ChestScreenController_tickHook->Restore();
 	g_Hooks.GetGammaHook->Restore();
 	g_Hooks.Actor_isInWaterHook->Restore();
@@ -897,12 +884,6 @@ void Hooks::ClickFunc(__int64 a1, char a2, char a3, __int16 a4, __int16 a5, __in
 		}
 	}
 	oFunc(a1, a2, a3, a4, a5, a6, a7, a8);
-}
-
-__int64 Hooks::MoveInputHandler_tick(C_MoveInputHandler* a1, C_Entity* a2)
-{
-	static auto oTick = g_Hooks.MoveInputHandler_tickHook->GetFastcall<__int64, C_MoveInputHandler*, C_Entity*>();
-	return oTick(a1, a2);
 }
 
 __int64 Hooks::ChestScreenController_tick(C_ChestScreenController* a1)

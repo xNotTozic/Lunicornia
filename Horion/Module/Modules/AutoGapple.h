@@ -6,7 +6,7 @@ class AutoGapple : public IModule
 private:
 	int health;
 public:
-	C_MoveInputHandler* inputHandler = nullptr;
+	//C_MoveInputHandler* inputHandler = nullptr;
 	AutoGapple();
 	~AutoGapple();
 

@@ -8,7 +8,7 @@ private:
 	int distance = 5;
 	vec3_t savepos;
 public:
-	C_MoveInputHandler* inputHandler = nullptr;
+	//C_MoveInputHandler* inputHandler = nullptr;
 	BugUp();
 	~BugUp();
 

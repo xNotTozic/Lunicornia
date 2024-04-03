@@ -16,7 +16,7 @@ private:
 	bool keepBlocks = true;
 	bool keepFood = true;
 public:
-	C_MoveInputHandler* inputHandler = nullptr;
+	//C_MoveInputHandler* inputHandler = nullptr;
 	InventoryCleaner();
 	~InventoryCleaner();
 

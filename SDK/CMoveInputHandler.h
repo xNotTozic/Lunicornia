@@ -1,6 +1,6 @@
 #pragma once
 
-class C_MoveInputHandler { // Updated
+/*class C_MoveInputHandler { // Updated
 public:
 	BUILD_ACCESS(this, bool, isSneakDownPrev, 0x0); // Updated
 	BUILD_ACCESS(this, bool, isJumpingPrev, 0x6); // Updated
@@ -22,4 +22,4 @@ public:
 	__int64 ClearMovementState() {
 		return Utils::CallVFunc<4,__int64>(this); // Outdated
 	};
-};
+};*/
